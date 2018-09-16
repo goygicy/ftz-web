@@ -2,8 +2,26 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-
+const bodyParser = require ('body-parser')
+const store = require('./store')
 const getTitle = require('../titles.js');
+
+//Adding in simple express app, serving the public directory, with a /createUser endpoint
+//to write data to the database 
+const app = express()
+app.use (express.static('public'))
+app.use (bodyParser.json())
+app.post ('/createUser', (req, res) => (
+    store
+     .createUser({
+         username: req.body.username,
+         password: req.body.password
+     })
+        .then ( () => res.sendStatus (200) )
+app.listen(3001, () => {
+    console.log('Server running on http://localhost:3001')
+})
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
