@@ -11,14 +11,16 @@ const getTitle = require('../titles.js');
 const app = express()
 app.use (express.static('public'))
 app.use (bodyParser.json())
-app.post ('/createUser', (req, res) => (
+app.post ('/createUser', (req, res) => {
     store
-     .createUser({
+     .createUser ({
          username: req.body.username,
          password: req.body.password
      })
         .then ( () => res.sendStatus (200) )
-app.listen(3001, () => {
+    })
+
+    app.listen(3001, () => {
     console.log('Server running on http://localhost:3001')
 })
 
@@ -27,8 +29,8 @@ app.listen(3001, () => {
 router.get('/', function (req, res, next) {
     res.render('index', {
         isIndex: true
-    });
-});
+    })
+})
 
 router.get('/home', function (req, res, next) {
     res.render('home');
