@@ -19,6 +19,10 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
+if (process.env.password)
+	console.log ("Your password is:)
+else 	console.log ("You fucking suck at what you are doing");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
