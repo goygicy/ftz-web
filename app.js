@@ -49,5 +49,5 @@ if (process.env.password) {
   console.log ("environment pass is:", process.env.password);
 }
 else
-  {console.log ("environment password found");
+  {console.log ("no environment password found");
 }
